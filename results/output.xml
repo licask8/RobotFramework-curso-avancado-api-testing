@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.3 (Python 3.10.2 on win32)" generated="20220314 17:11:13.193" rpa="false" schemaversion="2">
+<suite id="s1" name="Headers Params Auth" source="C:\Users\Elielson\Documents\cursoUdemy\RobotFramework\api-testing-avancado\headers_params_auth.robot">
+<test id="s1-t1" name="Exemplo: Fazendo autenticação básica (Basic Authentication)">
+<kw name="Conectar com autenticação por token na API do GitHub">
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${HEADERS}</var>
+<arg>Authorization=Bearer ${MY_GITHUB_TOKEN}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20220314 17:11:13.365" level="INFO">${HEADERS} = {'Authorization': 'Bearer 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'}</msg>
+<status status="PASS" starttime="20220314 17:11:13.364" endtime="20220314 17:11:13.365"/>
+</kw>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>alias=mygithubAuth</arg>
+<arg>url=${GITHUB_HOST}</arg>
+<arg>headers=${HEADERS}</arg>
+<arg>disable_warnings=True</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20220314 17:11:13.367" level="INFO">Creating Session using : alias=mygithubAuth, url=https://api.github.com, headers={'Authorization': 'Bearer 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'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20220314 17:11:13.365" endtime="20220314 17:11:13.367"/>
+</kw>
+<status status="PASS" starttime="20220314 17:11:13.363" endtime="20220314 17:11:13.367"/>
+</kw>
+<kw name="Solicitar os dados do meu usuário">
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${MY_USER_DATA}</var>
+<arg>alias=mygithubAuth</arg>
+<arg>url=/user</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20220314 17:11:13.603" level="INFO">GET Request : url=https://api.github.com/user 
+ path_url=/user 
+ headers={'User-Agent': 'python-requests/2.27.1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer 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'} 
+ body=None 
+ </msg>
+<msg timestamp="20220314 17:11:13.603" level="INFO">GET Response : url=https://api.github.com/user 
+ status=200, reason=OK 
+ headers={'Server': 'GitHub.com', 'Date': 'Mon, 14 Mar 2022 20:11:14 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Cache-Control': 'private, max-age=60, s-maxage=60', 'Vary': 'Accept, Authorization, Cookie, X-GitHub-OTP, Accept-Encoding, Accept, X-Requested-With', 'ETag': 'W/"5fae11fd60a4c3d6048dc2a34c968a3c6a24e89b144503ea4087877191794911"', 'Last-Modified': 'Mon, 14 Mar 2022 19:16:37 GMT', 'X-OAuth-Scopes': 'repo', 'X-Accepted-OAuth-Scopes': '', 'github-authentication-token-expiration': '2022-03-21 20:05:13 UTC', 'X-GitHub-Media-Type': 'github.v3; format=json', 'X-RateLimit-Limit': '5000', 'X-RateLimit-Remaining': '4998', 'X-RateLimit-Reset': '1647292174', 'X-RateLimit-Used': '2', 'X-RateLimit-Resource': 'core', 'Access-Control-Expose-Headers': 'ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Used, X-RateLimit-Resource, X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval, X-GitHub-Media-Type, X-GitHub-SSO, X-GitHub-Request-Id, Deprecation, Sunset', 'Access-Control-Allow-Origin': '*', 'Strict-Transport-Security': 'max-age=31536000; includeSubdomains; preload', 'X-Frame-Options': 'deny', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '0', 'Referrer-Policy': 'origin-when-cross-origin, strict-origin-when-cross-origin', 'Content-Security-Policy': "default-src 'none'", 'Content-Encoding': 'gzip', 'X-GitHub-Request-Id': 'DC68:08F7:3E399C:516A05:622FA162'} 
+ body={"login":"licask8","id":39626457,"node_id":"MDQ6VXNlcjM5NjI2NDU3","avatar_url":"https://avatars.githubusercontent.com/u/39626457?v=4","gravatar_id":"","url":"https://api.github.com/users/licask8","html_url":"https://github.com/licask8","followers_url":"https://api.github.com/users/licask8/followers","following_url":"https://api.github.com/users/licask8/following{/other_user}","gists_url":"https://api.github.com/users/licask8/gists{/gist_id}","starred_url":"https://api.github.com/users/licask8/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/licask8/subscriptions","organizations_url":"https://api.github.com/users/licask8/orgs","repos_url":"https://api.github.com/users/licask8/repos","events_url":"https://api.github.com/users/licask8/events{/privacy}","received_events_url":"https://api.github.com/users/licask8/received_events","type":"User","site_admin":false,"name":"Elielson Francisco","company":null,"blog":"","location":"São Paulo","email":null,"hireable":null,"bio":"Sou uma pessoa apaixonada por tecnologia, procurando por conhecimentos em busca de  aprimorar minhas habilidades e adquirir mais experiência.","twitter_username":null,"public_repos":3,"public_gists":0,"followers":0,"following":3,"created_at":"2018-05-25T14:13:42Z","updated_at":"2022-03-14T19:16:37Z"} 
+ </msg>
+<msg timestamp="20220314 17:11:13.604" level="INFO">${MY_USER_DATA} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20220314 17:11:13.368" endtime="20220314 17:11:13.604"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Meus dados: ${MY_USER_DATA.json()}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220314 17:11:13.606" level="INFO">Meus dados: {'login': 'licask8', 'id': 39626457, 'node_id': 'MDQ6VXNlcjM5NjI2NDU3', 'avatar_url': 'https://avatars.githubusercontent.com/u/39626457?v=4', 'gravatar_id': '', 'url': 'https://api.github.com/users/licask8', 'html_url': 'https://github.com/licask8', 'followers_url': 'https://api.github.com/users/licask8/followers', 'following_url': 'https://api.github.com/users/licask8/following{/other_user}', 'gists_url': 'https://api.github.com/users/licask8/gists{/gist_id}', 'starred_url': 'https://api.github.com/users/licask8/starred{/owner}{/repo}', 'subscriptions_url': 'https://api.github.com/users/licask8/subscriptions', 'organizations_url': 'https://api.github.com/users/licask8/orgs', 'repos_url': 'https://api.github.com/users/licask8/repos', 'events_url': 'https://api.github.com/users/licask8/events{/privacy}', 'received_events_url': 'https://api.github.com/users/licask8/received_events', 'type': 'User', 'site_admin': False, 'name': 'Elielson Francisco', 'company': None, 'blog': '', 'location': 'São Paulo', 'email': None, 'hireable': None, 'bio': 'Sou uma pessoa apaixonada por tecnologia, procurando por conhecimentos em busca de  aprimorar minhas habilidades e adquirir mais experiência.', 'twitter_username': None, 'public_repos': 3, 'public_gists': 0, 'followers': 0, 'following': 3, 'created_at': '2018-05-25T14:13:42Z', 'updated_at': '2022-03-14T19:16:37Z'}</msg>
+<status status="PASS" starttime="20220314 17:11:13.604" endtime="20220314 17:11:13.606"/>
+</kw>
+<kw name="Confere sucesso na requisição">
+<arg>${MY_USER_DATA}</arg>
+<kw name="Should Be True" library="BuiltIn">
+<arg>'${RESPONSE.status_code}'=='200' or '${RESPONSE.status_code}'=='201'</arg>
+<arg>msg=Erro na requisição! Verifique: ${RESPONSE}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" starttime="20220314 17:11:13.607" endtime="20220314 17:11:13.611"/>
+</kw>
+<status status="PASS" starttime="20220314 17:11:13.606" endtime="20220314 17:11:13.611"/>
+</kw>
+<status status="PASS" starttime="20220314 17:11:13.368" endtime="20220314 17:11:13.611"/>
+</kw>
+<status status="PASS" starttime="20220314 17:11:13.363" endtime="20220314 17:11:13.612"/>
+</test>
+<doc>Exemplos da própria Library: https://github.com/bulkan/robotframework-requests/blob/master/tests/testcase.robot
+Doc da API do GitHub: https://developer.github.com/v3/</doc>
+<status status="PASS" starttime="20220314 17:11:13.195" endtime="20220314 17:11:13.616"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Headers Params Auth">Headers Params Auth</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
